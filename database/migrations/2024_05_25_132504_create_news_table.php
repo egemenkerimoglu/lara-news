@@ -15,13 +15,14 @@ return new class extends Migration
             $table->id();
             $table->string('title',160);
             $table->string('slug')->unique();
-            $table->test('content');
+            $table->text('content');
             $table->string('image')->nullable();
             $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->boolean('is_active')->default(true);
             // $table->timestamp('published_at')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
